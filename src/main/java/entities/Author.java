@@ -3,6 +3,7 @@ package entities;
 import dtos.AuthorDTO;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Table(name = "author")
@@ -18,8 +19,11 @@ public class Author {
     @Column(name = "birth_date")
     private String birth_date;
 
+    /*
+    // The bio is too long
     @Column(name = "bio")
     private String bio;
+    */
 
     @ManyToMany(mappedBy = "authors",
             cascade = {
@@ -35,7 +39,9 @@ public class Author {
         this.id = dto.getKey();
         this.name = dto.getName();
         this.birth_date = dto.getBirth_date();
-        this.bio = dto.getBio();
+//        this.bio = dto.getBio();
+
+        this.books = new ArrayList<>();
     }
 
     public String getId() {
@@ -50,9 +56,9 @@ public class Author {
         return birth_date;
     }
 
-    public String getBio() {
-        return bio;
-    }
+//    public String getBio() {
+//        return bio;
+//    }
 
     public List<Book> getBooks() {
         return books;

@@ -3,6 +3,7 @@ package entities;
 import dtos.BookDTO;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -36,8 +37,14 @@ public class Book {
     }
 
     public Book(BookDTO dto) {
-        String isbn_10 = dto.getIsbn_10()[0];
-        String isbn_13 = dto.getIsbn_13()[0];
+        String isbn_10 = null;
+        String isbn_13 = null;
+        if (dto.getIsbn_10() != null) {
+            isbn_10 = dto.getIsbn_10()[0];
+        }
+        if (dto.getIsbn_13() != null) {
+            isbn_13 = dto.getIsbn_13()[0];
+        }
 
         this.isbn = isbn_10 != null
                 ? isbn_10
@@ -47,6 +54,8 @@ public class Book {
         this.publish_date = dto.getPublish_date();
         this.first_sentence = dto.getFirst_sentence();
         this.number_of_pages = dto.getNumber_of_pages();
+
+        this.authors = new ArrayList<>();
     }
 
     public String getIsbn() {
