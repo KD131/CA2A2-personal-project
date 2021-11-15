@@ -1,5 +1,7 @@
 package entities;
 
+import dtos.AuthorDTO;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -26,5 +28,33 @@ public class Author {
     })
     private List<Book> books;
 
+    public Author() {
+    }
 
+    public Author(AuthorDTO dto) {
+        this.id = dto.getKey();
+        this.name = dto.getName();
+        this.birth_date = dto.getBirth_date();
+        this.bio = dto.getBio();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getBirth_date() {
+        return birth_date;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
 }
