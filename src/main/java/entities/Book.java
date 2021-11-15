@@ -29,28 +29,4 @@ public class Book {
     private List<Author> authors;
 
 
-
-    public int getNumber_of_pages() {
-        return number_of_pages;
-    }
-
-    public String getPublish_date() {
-        return publish_date;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getFirst_sentence() {
-        return first_sentence;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
 }

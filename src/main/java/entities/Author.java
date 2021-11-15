@@ -16,6 +16,9 @@ public class Author {
     @Column(name = "birth_date")
     private String birth_date;
 
+    @Column(name = "bio")
+    private String bio;
+
     @ManyToMany(mappedBy = "authors",
             cascade = {
             CascadeType.PERSIST,
@@ -24,20 +27,4 @@ public class Author {
     private List<Book> books;
 
 
-
-    public String getBirth_date() {
-        return birth_date;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 }
