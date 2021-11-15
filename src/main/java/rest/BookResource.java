@@ -28,10 +28,7 @@ public class BookResource {
         return "Hello, World!";
     }
 
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("{isbn}")
-    public String postBook(@PathParam("isbn") String isbn) throws IOException {
+    private BookDTO getBookFromISBN(String isbn) throws IOException {
         String baseURL = "https://openlibrary.org";
         String url = String.format("%s/isbn/%s.json", baseURL, isbn);
 
@@ -46,6 +43,14 @@ public class BookResource {
             fetchedAuthors.add(author);
         }
         fetchedBook.setAuthors(fetchedAuthors);
+        return fetchedBook;
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("{isbn}")
+    public String postBook(@PathParam("isbn") String isbn) throws IOException {
+        BookDTO fetchedBook = getBookFromISBN(isbn);
         BookDTO submittedBook = BOOK_FACADE.createBook(fetchedBook);
         return GSON.toJson(submittedBook);
     }
