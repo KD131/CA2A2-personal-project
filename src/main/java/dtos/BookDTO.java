@@ -24,6 +24,7 @@ public class BookDTO {
         this.publish_date = book.getPublish_date();
         this.first_sentence = book.getFirst_sentence();
         this.number_of_pages = book.getNumber_of_pages();
+        this.authors = AuthorDTO.getDtos(book.getAuthors());
     }
 
     public String[] getIsbn_10() {
